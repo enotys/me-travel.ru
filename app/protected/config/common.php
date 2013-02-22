@@ -77,13 +77,13 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'enotsv2@gmail.com',
-		'uploadsDirPath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'../runtime/upload',
-		'externalAuthData'=> array(
-			1 => array(
-				'login' => 'lazuka',
-				'password' => 'NoRealHbfk436',
-				'applicationId' => 'e9f2f46b00344fc6a3e2cfe48b6b92f7',
-			)
-		),
+//		'uploadsDirPath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'../runtime/upload',
+//		'externalAuthData'=> array(
+//			1 => array(
+//				'login' => 'lazuka',
+//				'password' => 'NoRealHbfk436',
+//				'applicationId' => 'e9f2f46b00344fc6a3e2cfe48b6b92f7',
+//			)
+//		),
 	),
 );

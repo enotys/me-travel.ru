@@ -8,7 +8,14 @@
 return CMap::mergeArray(
 	require(dirname(__FILE__).'/common.php'),
 	array(
-		//'defaultController' => 'ad',
+		'defaultController' => 'site',
+
+        // autoloading model and component classes
+        'import'=>array(
+            'application.models.*',
+            'application.components.*',
+            //'application.components.External.*',
+        ),
 
 		'modules'=>array(
 			// uncomment the following to enable the Gii tool
@@ -16,15 +23,10 @@ return CMap::mergeArray(
 				'class'=>'system.gii.GiiModule',
 				'password'=>'111',
 				// If removed, Gii defaults to localhost only. Edit carefully to taste.
-				'ipFilters'=>array('127.0.0.1','::1'),
+				'ipFilters'=>array('127.0.0.1', '192.168.2.*'),
 			),
 		),
 
-		// autoloading model and component classes
-		'import'=>array(
-			'application.models.*',
-			'application.components.*',
-			//'application.components.External.*',
-		),
+
 	)
 );

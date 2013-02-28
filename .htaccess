@@ -1,0 +1,9 @@
+php_value include_path "C:/WebServers/home/me-travel.ru/app/"
+php_value error_reporting 7
+
+RewriteEngine on
+# если директория или файл существуют, использовать их напрямую
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# иначе отправлять запрос на файл index.php
+RewriteRule . index.php

@@ -17,15 +17,15 @@ return CMap::mergeArray(
             //'application.components.External.*',
         ),
 
-		'modules'=>array(
-			// uncomment the following to enable the Gii tool
-			'gii'=>array(
-				'class'=>'system.gii.GiiModule',
-				'password'=>'111',
-				// If removed, Gii defaults to localhost only. Edit carefully to taste.
-				'ipFilters'=>array('127.0.0.1', '192.168.2.*'),
-			),
-		),
+        'modules'=>array(
+                // uncomment the following to enable the Gii tool
+                'gii'=>array(
+                        'class'=>'system.gii.GiiModule',
+                        'password'=>'111',
+                        // If removed, Gii defaults to localhost only. Edit carefully to taste.
+                        'ipFilters'=>array('127.0.0.1', '192.168.2.*'),
+                ),
+        ),
 
 
 	)

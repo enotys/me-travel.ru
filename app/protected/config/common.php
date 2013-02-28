@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'ME Travel',
+	'name'=>'Me Travel',
 	'language'=>'ru',
 
 	// preloading 'log' component
@@ -15,33 +15,33 @@ return array(
 
 	// application components
 	'components'=>array(
-//		'user'=>array(
-//			'class' => 'WebUser',
-//			// enable cookie-based authentication
-//			'allowAutoLogin'=>true,
-//			'loginUrl'=>array('/auth/login'),
-//		),
-		// uncomment the following to enable URLs in path-format
-		'urlManager'=>array(
-			'urlFormat'=>'path',
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
-			'showScriptName'=>false,
-			'caseSensitive'=>false,
+		'user'=>array(
+			'class' => 'CWebUser',
+			// enable cookie-based authentication
+			'allowAutoLogin'=>true,
+			'loginUrl'=>array('/auth/login'),
 		),
+		// uncomment the following to enable URLs in path-format
+//		'urlManager'=>array(
+//			'urlFormat'=>'path',
+//			'rules'=>array(
+//				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+//				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+//				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+//			),
+//			'showScriptName'=>false,
+//			'caseSensitive'=>false,
+//		),
 		// use caching
 		'cache'=>array(
 			'class'=>'CFileCache',
 		),
 		// use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=me-travel',
+			'connectionString' => 'mysql:host=localhost;dbname=h47280_me-travel',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '111',
+			'username' => 'h47280_me-travel',
+			'password' => 'pass',
 			'charset' => 'utf8',
 			'schemaCachingDuration'=>3600,
 		),

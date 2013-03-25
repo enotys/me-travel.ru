@@ -1,229 +1,495 @@
-body
-{
-	margin: 0;
-	padding: 0;
-	color: #555;
-	font: normal 10pt Arial,Helvetica,sans-serif;
-	background: #EFEFEF;
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+html {
+    overflow-y: scroll;
 }
 
-#page
-{
-	margin-top: 5px;
-	margin-bottom: 5px;
-	background: white;
-	border: 1px solid #C9E0ED;
+body {
+    min-width: 1200px;
 }
 
-#header
-{
-	margin: 0;
-	padding: 0;
-	border-top: 3px solid #C9E0ED;
+body > .navbar .brand {
+    color: #999999;
+    font-weight: bold;
+    margin-left: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);
+    transition: all 0.2s linear 0s;
+}
+body > .navbar .brand:hover {
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.4);
 }
 
-#content
-{
-    padding: 20px;
+
+body > .navi .container {
+    width: 1170px;
+}
+.row .nav {
+    margin-bottom: 30px;
 }
 
-#sidebar
-{
-	padding: 20px 20px 20px 0;
+.navi .nav span {
+    color: #fff;
+    padding: 10px 0 10px 10px;
+    display: inline-block;
 }
 
-#footer
-{
-	padding: 10px;
-	margin: 10px 20px;
-	font-size: 0.8em;
-	text-align: center;
-	border-top: 1px solid #C9E0ED;
+.main_div {
+    position: relative;
 }
 
-#logo
-{
-	padding: 10px 20px;
-	font-size: 200%;
-}
-
-#mainmenu
-{
-	background:white url(bg.gif) repeat-x left top;
-}
-
-#mainmenu ul
-{
-	padding:6px 20px 5px 20px;
-	margin:0px;
-}
-
-#mainmenu ul li
-{
-	display: inline;
-}
-
-#mainmenu ul li a
-{
-	color:#ffffff;
-	background-color:transparent;
-	font-size:12px;
-	font-weight:bold;
-	text-decoration:none;
-	padding:5px 8px;
-}
-
-#mainmenu ul li a:hover, #mainmenu ul li.active a
-{
-	color: #6399cd;
-	background-color:#EFF4FA;
-	text-decoration:none;
-}
-
-div.flash-error, div.flash-notice, div.flash-success
-{
-	padding:.8em;
-	margin-bottom:1em;
-	border:2px solid #ddd;
-}
-
-div.flash-error
-{
-	background:#FBE3E4;
-	color:#8a1f11;
-	border-color:#FBC2C4;
-}
-
-div.flash-notice
-{
-	background:#FFF6BF;
-	color:#514721;
-	border-color:#FFD324;
-}
-
-div.flash-success
-{
-	background:#E6EFC2;
-	color:#264409;
-	border-color:#C6D880;
-}
-
-div.flash-error a
-{
-	color:#8a1f11;
-}
-
-div.flash-notice a
-{
-	color:#514721;
-}
-
-div.flash-success a
-{
-	color:#264409;
-}
-
-div.form .rememberMe label
-{
-	display: inline;
-}
-
-div.view
-{
-	padding: 10px;
-	margin: 10px 0;
-	border: 1px solid #C9E0ED;
-}
-
-div.breadcrumbs
-{
-	font-size: 0.9em;
-	padding: 5px 20px;
-}
-
-div.breadcrumbs span
-{
-	font-weight: bold;
-}
-
-div.search-form
-{
-	padding: 10px;
-	margin: 10px 0;
-	background: #eee;
-}
-
-.portlet
-{
+#show-hide-filter {
+    position: absolute;
+    right: -40px;
+    margin-top: 55px;;
 
 }
 
-.portlet-decoration
-{
-	padding: 3px 8px;
-	background: #B7D6E7;
-	border-left: 5px solid #6FACCF;
+.table .sortable th{
+    font-size: 10px;
 }
 
-.portlet-title
-{
-	font-size: 12px;
-	font-weight: bold;
-	padding: 0;
-	margin: 0;
-	color: #298dcd;
+.table th.groupTr {
+    text-align: center;
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
 }
 
-.portlet-content
-{
-	font-size:0.9em;
-	margin: 0 0 15px 0;
-	padding: 5px 8px;
-	background:#EFFDFF;
+table.table input.m_checkbox {
+    margin: -4px 0 0;
 }
 
-.portlet-content ul
-{
-	list-style-image:none;
-	list-style-position:outside;
-	list-style-type:none;
-	margin: 0;
-	padding: 0;
+table.table th {
+    padding: 4px 6px;
+    text-align: right;
 }
 
-.portlet-content li
-{
-	padding: 2px 0 4px 0px;
+#mediaplans-table_c1,
+#mediaplans-table_c2,
+#mediaplans-table_c3 {
+    text-align: left;
 }
 
-.operations
-{
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+.spaceTr {
+    position: relative;
 }
 
-.operations li
-{
-	padding-bottom: 2px;
+.table .spaceTr td {
+    height: 8px;
+    border-bottom-width: 0;
+    padding: 0;
+    margin:0;
+    width: 100%;
 }
 
-.operations li a
-{
-	font: bold 12px Arial;
-	color: #0066A4;
-	display: block;
-	padding: 2px 0 2px 8px;
-	line-height: 15px;
-	text-decoration: none;
+.spaceTr i {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAICAYAAAA4GpVBAAAAIElEQVQIHWP6////eyYGBoaXIOIpiHgEIh6CiAdw7lMA+J4KNYkPzDEAAAAASUVORK5CYII=") repeat scroll 0 0 transparent;
+    bottom: -8px;
+    display: block;
+    height: 8px;
+    position: relative;
 }
 
-.operations li a:visited
-{
-	color: #0066A4;
+table.table tbody td {
+    vertical-align: middle;
+    font-size: 85%;
+    padding: 4px 6px;
+    text-align: right;
+    width: 60px;
+    overflow: hidden;
 }
 
-.operations li a:hover
-{
-	background: #80CFFF;
+table.table td:first-child {
+    /*width: auto;*/
+    text-align: left;
+}
+
+.table .td1, .table .td150, .table .td2 {
+    text-align:left;
+}
+
+.table .td1 {
+    width: 130px;
+}
+
+.table .td2 {
+    width: 235px;
+}
+
+.table .statusTd, .table #mediaplans-table_c13 {
+    width: auto;
+    text-align: center;
+}
+
+table.table td .label {
+    font-size: 85%;
+}
+
+table.table td.leftBorder {
+    border-left: 1px solid #DDDDDD;
+}
+
+#mediaplans-table_c4,
+#mediaplans-table_c7,
+#mediaplans-table_c10,
+#mediaplans-table_c13 {
+    border-left: 1px solid #DDDDDD;
+}
+
+#mediaplans-table_c1,
+#mediaplans-table_c2 {
+    width: 130px;
+}
+
+#mediaplans-table_c3 {
+    width: 235px;
+}
+
+#mediaplans-table_c4,
+#mediaplans-table_c5,
+#mediaplans-table_c6,
+#mediaplans-table_c7,
+#mediaplans-table_c8,
+#mediaplans-table_c9,
+#mediaplans-table_c10
+#mediaplans-table_c11,
+#mediaplans-table_c12,
+#mediaplans-table_c14 {
+    width: 60px;
+}
+
+.table .info_td h6{
+    margin: 0;
+    color: #0088CC;
+}
+
+.table .info_td span {
+    color: #808080;
+}
+
+.table .sortable a,
+.dotted {
+    border-bottom: 1px dotted;
+    cursor: pointer;
+}
+
+.dotted a {
+    color: #333333;
+}
+
+.table .sortable a {
+    color: #333333;
+}
+
+.green {
+    color: #468847;
+}
+
+.red {
+    color: #b94a48;
+}
+
+.filter input {
+    width: 95%;
+}
+
+.filter .input-small {
+    width: 65%;
+}
+
+.filter .input-mini {
+    width: 24%;
+    float:right;
+}
+
+.sort-link.asc:after {
+    content: ' ↓';
+}
+
+.sort-link.desc:after {
+    content: ' ↑';
+}
+
+.editable form {
+    margin: 0;
+}
+
+.ad-title,
+.ad-description {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 200px;
+}
+
+#mediaplans-table tr.filters {
+    background-color: #f9f9f9;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+}
+
+#mediaplans-table tr.filters td input[type=text],
+#mediaplans-table tr.filters td select {
+    margin-bottom: 0;
+}
+
+#mediaplans-table input[type=text] {
+    width: 50px;
+    padding: 2px;
+    font-size: 10px;
+}
+
+#mediaplans-table input[name="Ad[title]"] {
+    width: 100%;
+}
+
+#mediaplans-table input[type=text], #mediaplans-table select {
+    width: 90%;
+    padding: 2px;
+    font-size: 10px;
+    height: 20px;
+}
+
+/*#mediaplans-table input[name="Ad[title]"] {*/
+    /*width: 100%;*/
+/*}*/
+
+#user-modal-form input[type=text],
+#user-modal-form input[type=password],
+#user-modal-form select {
+    margin-right: 10px;
+}
+
+#user-modal-form input[type=text],
+#user-modal-form input[type=password] {
+    width: 230px;
+}
+
+#user-modal-form select {
+    width: 245px;
+}
+
+#add-user-link {
+    position: relative;
+    float: left;
+    left: -45px;
+    top: 33px;
+}
+
+
+table .header-fixed {
+    position: fixed;
+    top: 0px;
+    z-index: 1020; /* 10 less than .navbar-fixed to prevent any overlap */
+    border-bottom: 1px solid #d5d5d5;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+    -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
+}
+
+h4.ui-pnotify-title {
+    font-size: 14px;
+}
+
+div.ui-pnotify-text {
+    font-size: 13px;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   Theses examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for img, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
 }

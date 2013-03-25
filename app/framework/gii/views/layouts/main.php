@@ -41,7 +41,7 @@ $cs->registerCssFile($baseUrl.'/js/fancybox/jquery.fancybox-1.3.1.css');
 			| <?php echo CHtml::link('logout',array('/gii/default/logout')); ?>
 		<?php endif; ?>
 		</div>
-		<div id="logo"><?php echo CHtml::link(CHtml::image($this->module->assetsUrl.'/images/logo.png'),array('/gii')); ?></div>
+		<div id="logo"><?php echo CHtml::link(CHtml::image($this->module->assetsUrl.'/img/logo.png'),array('/gii')); ?></div>
 	</div><!-- header -->
 
 	<?php echo $content; ?>

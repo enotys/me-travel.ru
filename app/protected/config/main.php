@@ -8,13 +8,12 @@
 return CMap::mergeArray(
 	require(dirname(__FILE__).'/common.php'),
 	array(
-		'defaultController' => 'site',
+		'defaultController' => 'blog',
 
         // autoloading model and component classes
         'import'=>array(
             'application.models.*',
             'application.components.*',
-            //'application.components.External.*',
         ),
 
         'modules'=>array(

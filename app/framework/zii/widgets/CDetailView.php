@@ -117,7 +117,7 @@ class CDetailView extends CWidget
 	 */
 	public $htmlOptions=array('class'=>'detail-view');
 	/**
-	 * @var string the base script URL for all detail view resources (e.g. javascript, CSS file, images).
+	 * @var string the base script URL for all detail view resources (e.g. javascript, CSS file, img).
 	 * Defaults to null, meaning using the integrated detail view resources (which are published as assets).
 	 */
 	public $baseScriptUrl;

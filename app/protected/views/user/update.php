@@ -1,11 +1,13 @@
 <?php
 /* @var $this UserController */
 /* @var $model User */
+/* @var $brands Brand[] */
+/* @var $userBrandsIds integer[] */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Пользователи'=>array('index'),
+//	$model->name=>array('view','id'=>$model->id),
+	'Редактирование',
 );
 
 $this->menu=array(
@@ -14,8 +16,9 @@ $this->menu=array(
 	array('label'=>'View User', 'url'=>array('view', 'id'=>$model->id)),
 	array('label'=>'Manage User', 'url'=>array('admin')),
 );
+echo $this->renderPartial('_form', array(
+	'model'=>$model,
+	'brands'=>$brands,
+	'userBrandsIds'=>$userBrandsIds,
+));
 ?>
-
-<h1>Update User <?php echo $model->id; ?></h1>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

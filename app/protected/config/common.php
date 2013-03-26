@@ -57,7 +57,7 @@ return array(
 			// Будем использовать свой менеджер авторизации
 			'class' => 'PhpAuthManager',
 			// Роль по умолчанию.
-			'defaultRoles' => array(0),
+			'defaultRoles' => array(3),
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

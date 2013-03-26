@@ -11,7 +11,7 @@
 				<?php
 				$this->widget('zii.widgets.CMenu',array(
 					'items'=>array(
-						array('label'=>'Медиапланы', 'url'=>array('ad/index'), 'visible'=>!Yii::app()->user->isGuest),
+						array('label'=>'Заметки', 'url'=>array('blog/index'), 'visible'=>!Yii::app()->user->isGuest),
 						array('label'=>'Пользователи', 'url'=>array('user/index'), 'visible'=>Yii::app()->user->checkAccess('users:view'))
 					),
 					'htmlOptions' => array('class' => 'nav'),

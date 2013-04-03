@@ -46,7 +46,6 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `user_id` int(10) unsigned NOT NULL,
   `date` int(10) unsigned NOT NULL,
   `text` text NOT NULL,
-  `attempt` int(2) unsigned NOT NULL,
   `blog_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -81,6 +80,24 @@ CREATE TABLE IF NOT EXISTS `tbl_migration` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `travel`
+--
+
+CREATE TABLE IF NOT EXISTS `travel` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `maps_label` varchar(255) NOT NULL,
+  `date` int(10) unsigned NOT NULL,
+  `text` text NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `private` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `user`
 --
 
@@ -100,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 REPLACE INTO `user` (`id`, `name`, `email`, `password`, `roleId`, `blocked`, `deleted`) VALUES
-(1, 'enot', 'enot@yandex.ru', '1a1dc91c907325c69271ddf0c944bc72', 1, 0, 0);
+(1, 'enot', 'enot@yandex.ru', 'g7akTYJMHBRTA', 1, 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

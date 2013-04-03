@@ -26,7 +26,7 @@ $this->menu=array(
                 );
                 ?>
             </li>
-            <!--                <li><a href="#">All</a></li>-->
+            <li><a href="#">Мой профиль</a></li>
         </ul>
     </div>
 </div>
@@ -43,9 +43,18 @@ if (Yii::app()->user->hasFlash('success')): ?>
     <div class="alert alert-success"><?php echo Yii::app()->user->getFlash('success') ?></div>
 <?php endif; ?>
 <!-- alerts -->
-<h1></h1>
+<h3><?php echo Yii::app()->user->getModel()->blog->title ?> </h3>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<?php
+    $mapsLabels = array();
+    $travelData = Yii::app()->user->getModel()->travels;
+    foreach ($travelData as $travelInfo) {
+        $mapsLabels[]= $travelInfo->maps_label;
+    }
+    echo print_r($mapsLabels, 1);
+?>
+
+<?php //$this->widget('zii.widgets.CListView', array(
+//	'dataProvider'=>$dataProvider,
+//	'itemView'=>'_view',
+//)); ?>

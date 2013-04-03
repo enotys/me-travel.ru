@@ -14,6 +14,8 @@
  */
 class User extends CActiveRecord {
 
+    const SECRET_KEY = 'g79@(dk;89Gjsq)';
+
     // User roles ids.
     const ROLE_ADMIN_ID = 1;
     const ROLE_USER = 2;
@@ -24,6 +26,8 @@ class User extends CActiveRecord {
         self::ROLE_ADMIN_ID => 'Администратор',
         self::ROLE_USER => 'Пользователь',
     );
+
+    private $oldPassword;
 
     /**
      * Return roles names, which display in role select control.
@@ -93,6 +97,8 @@ class User extends CActiveRecord {
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'blog'=>array(self::HAS_ONE, 'Blog','user_id'),
+            'travels'=>array(self::HAS_MANY,'Travel', 'user_id'),
 		);
 	}
 
@@ -103,12 +109,12 @@ class User extends CActiveRecord {
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'email' => 'Email',
-			'password' => 'Password',
-			'roleId' => 'Role',
-			'blocked' => 'Blocked',
-			'deleted' => 'Deleted',
+			'name' => 'Имя',
+			'email' => 'E-mail',
+			'password' => 'Пароль',
+			'roleId' => 'Роль',
+			'blocked' => 'Заблокирован',
+			'deleted' => 'Удален',
 		);
 	}
 
@@ -135,4 +141,47 @@ class User extends CActiveRecord {
 			'criteria'=>$criteria,
 		));
 	}
+
+    /**
+     * Get password hash.
+     *
+     * @param string $password
+     * @return string
+     */
+    public static function hashPassword($password) {
+        return crypt(md5($password), self::SECRET_KEY);
+    }
+
+    /**
+     * After find store password hash.
+     *
+     */
+    protected function afterFind()
+    {
+        parent::afterFind();
+        $this->oldPassword = $this->password;
+    }
+
+    /**
+     * Check password value. If not empty and not equal value old password.
+     *
+     * @return bool
+     */
+    protected function beforeSave()
+    {
+        if (parent::beforeSave()) {
+            if ($this->isNewRecord) {
+                $this->password = self::hashPassword($this->password);
+            } elseif (!empty($this->password)
+                && $this->password != $this->oldPassword
+            ) {
+                $this->password = self::hashPassword($this->password);
+            } else {
+                $this->password = $this->oldPassword;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -1,20 +1,12 @@
 <?php
 
-/**
- * Class BlogController
- *
- * @author enot
- */
-class BlogController extends Controller {
-
+class CommentsController extends Controller
+{
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/default';
-
-    public $pageTitle = 'Заметки о путешествиях';
-
+	public $layout='//layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -32,27 +24,25 @@ class BlogController extends Controller {
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
-	public function accessRules() {
-        $rules = array();
-        if (Yii::app()->user->checkAccess('blog:view')) {
-            $rules[] = array('allow',
-                'actions'=>array(
-                    'index',
-                ),
-                'users'=>array('*'),
-            );
-        }
-        if (Yii::app()->user->checkAccess('blog:edit')) {
-            $rules[] = array('allow',
-                'actions'=>array(
-                    'edit',
-                ),
-                'users'=>array('*'),
-            );
-        }
-        $rules[] = array('deny','users'=>array('*'));
-
-        return $rules;
+	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
 	}
 
 	/**
@@ -72,13 +62,14 @@ class BlogController extends Controller {
 	 */
 	public function actionCreate()
 	{
-		$model = new Blog;
+		$model=new Comments;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Blog'])) {
-			$model->attributes = $_POST['Blog'];
+		if(isset($_POST['Comments']))
+		{
+			$model->attributes=$_POST['Comments'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -100,9 +91,9 @@ class BlogController extends Controller {
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Blog']))
+		if(isset($_POST['Comments']))
 		{
-			$model->attributes=$_POST['Blog'];
+			$model->attributes=$_POST['Comments'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -131,7 +122,7 @@ class BlogController extends Controller {
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Blog');
+		$dataProvider=new CActiveDataProvider('Comments');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -142,10 +133,10 @@ class BlogController extends Controller {
 	 */
 	public function actionAdmin()
 	{
-		$model=new Blog('search');
+		$model=new Comments('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Blog']))
-			$model->attributes=$_GET['Blog'];
+		if(isset($_GET['Comments']))
+			$model->attributes=$_GET['Comments'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -156,12 +147,12 @@ class BlogController extends Controller {
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Blog the loaded model
+	 * @return Comments the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Blog::model()->findByPk($id);
+		$model=Comments::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -169,11 +160,11 @@ class BlogController extends Controller {
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Blog $model the model to be validated
+	 * @param Comments $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='blog-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='comments-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

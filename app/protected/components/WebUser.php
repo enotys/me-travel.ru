@@ -46,7 +46,7 @@ class WebUser extends CWebUser {
 	 * @param bool $forceGet force load user if user was getting earlier.
 	 * @return User
 	 */
-	private function getModel($forceGet = false)
+	public function getModel($forceGet = false)
 	{
 		if (!$this->isGuest && $this->_model === null || $forceGet)
 		{

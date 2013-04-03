@@ -1,21 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "blog".
+ * This is the model class for table "travel".
  *
- * The followings are the available columns in table 'blog':
+ * The followings are the available columns in table 'travel':
  * @property string $id
  * @property string $title
- * @property string $fio
+ * @property string $maps_label
+ * @property string $date
+ * @property string $text
  * @property string $user_id
- * @property integer $deleted
+ * @property integer $private
  */
-class Blog extends CActiveRecord
+class Travel extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Blog the static model class
+	 * @return Travel the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -27,7 +29,7 @@ class Blog extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'blog';
+		return 'travel';
 	}
 
 	/**
@@ -38,13 +40,13 @@ class Blog extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, fio, user_id', 'required'),
-			array('deleted', 'numerical', 'integerOnly'=>true),
-			array('title, fio', 'length', 'max'=>255),
-			array('user_id', 'length', 'max'=>10),
+			array('title, maps_label, date, text, user_id', 'required'),
+			array('private', 'numerical', 'integerOnly'=>true),
+			array('title, maps_label', 'length', 'max'=>255),
+			array('date, user_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, fio, user_id, deleted', 'safe', 'on'=>'search'),
+			array('id, title, maps_label, date, text, user_id, private', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,7 +58,7 @@ class Blog extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'user' => array(self::BELONGS_TO,'User', 'user_id'),
+            'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -68,9 +70,11 @@ class Blog extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => 'Title',
-			'fio' => 'Fio',
+			'maps_label' => 'Maps Label',
+			'date' => 'Date',
+			'text' => 'Text',
 			'user_id' => 'User',
-			'deleted' => 'Deleted',
+			'private' => 'Private',
 		);
 	}
 
@@ -87,9 +91,11 @@ class Blog extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('title',$this->title,true);
-		$criteria->compare('fio',$this->fio,true);
+		$criteria->compare('maps_label',$this->maps_label,true);
+		$criteria->compare('date',$this->date,true);
+		$criteria->compare('text',$this->text,true);
 		$criteria->compare('user_id',$this->user_id,true);
-		$criteria->compare('deleted',$this->deleted);
+		$criteria->compare('private',$this->private);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

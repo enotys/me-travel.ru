@@ -27,7 +27,7 @@ class AuthController extends Controller
 				$userModel->password
 			);
 			if ($identity->authenticate()) {
-				$duration=3600; //1 minute * 24 * 30; // 30 days
+				$duration = 3600 * 24 * 30; // 30 days
 				Yii::app()->user->login($identity, $duration);
 				$this->redirect(array('blog/index'));
 			} else {

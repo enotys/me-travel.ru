@@ -48,12 +48,47 @@ if (Yii::app()->user->hasFlash('success')): ?>
 <?php
     $mapsLabels = array();
     $travelData = Yii::app()->user->getModel()->travels;
+
     foreach ($travelData as $travelInfo) {
         $mapsLabels[]= $travelInfo->maps_label;
     }
     echo print_r($mapsLabels, 1);
 ?>
+<?php
 
+?>
+<div id="mapId" style="width: 1100px; height: 750px"></div>
+
+<script type="text/javascript">
+    ymaps.ready(init);
+
+    var myMap;
+    var myPlacemarks = [];
+
+    function init(){
+        myMap = new ymaps.Map (
+            "mapId", {
+                center: [23.354486,0.486374],
+                zoom: 2
+            }
+        );
+        <?php
+            foreach ($travelData as $travelInfo) {
+                echo "
+                    myPlacemarks.push(new ymaps.Placemark([".
+                        $travelInfo->maps_label."], {
+                        content:'".$travelInfo->title."',
+                        balloonContent:'".$travelInfo->title."'
+                    }));
+                ";
+            }
+        ?>
+       console.log(myPlacemarks);
+       for(var i = 0; i < myPlacemarks.length; i++) {
+           myMap.geoObjects.add(myPlacemarks[i])
+       }
+    }
+</script>
 <?php //$this->widget('zii.widgets.CListView', array(
 //	'dataProvider'=>$dataProvider,
 //	'itemView'=>'_view',

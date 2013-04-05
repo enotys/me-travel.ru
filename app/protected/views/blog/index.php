@@ -14,20 +14,32 @@ $this->menu=array(
 <!--menu-->
 <div class="row">
     <div class="span12">
+        <?php echo CHtml::link(
+            '<i class="icon-map-marker icon-white"></i> Добавить заметку',
+            array(
+                'travel/add',
+            ),
+            array(
+                'class' => 'pull-right btn btn-primary'
+            )
+        );
+        ?>
         <!-- menu -->
-        <ul class="nav nav-tabs">
-            <li class="active">
-                <?php
-                echo CHtml::link(
-                    'Карта',
-                    array(
-                        'blog/index',
-                    )
-                );
-                ?>
-            </li>
-            <li><a href="#">Мой профиль</a></li>
-        </ul>
+        <nav>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <?php
+                    echo CHtml::link(
+                        'Карта',
+                        array(
+                            'blog/index',
+                        )
+                    );
+                    ?>
+                </li>
+                <li><a href="#">Мой профиль</a></li>
+            </ul>
+        </nav>
     </div>
 </div>
 <!-- menu -->
@@ -47,17 +59,13 @@ if (Yii::app()->user->hasFlash('success')): ?>
 
 <?php
     $mapsLabels = array();
+    $calendar = array();
     $travelData = Yii::app()->user->getModel()->travels;
-
-    foreach ($travelData as $travelInfo) {
-        $mapsLabels[]= $travelInfo->maps_label;
-    }
-    echo print_r($mapsLabels, 1);
 ?>
 <?php
 
 ?>
-<div id="mapId" style="width: 1100px; height: 750px"></div>
+<div id="mapId" style="width: 1170px; height: 430px"></div>
 
 <script type="text/javascript">
     ymaps.ready(init);
@@ -69,7 +77,7 @@ if (Yii::app()->user->hasFlash('success')): ?>
         myMap = new ymaps.Map (
             "mapId", {
                 center: [23.354486,0.486374],
-                zoom: 2
+                zoom: 1
             }
         );
         <?php
@@ -89,7 +97,35 @@ if (Yii::app()->user->hasFlash('success')): ?>
        }
     }
 </script>
-<?php //$this->widget('zii.widgets.CListView', array(
-//	'dataProvider'=>$dataProvider,
-//	'itemView'=>'_view',
-//)); ?>
+
+<?php
+    foreach ($travelData as $travelInfo) {
+        $travelYear = date('Y', $travelInfo->date);
+        $travelMonthNumber = date('n', $travelInfo->date);
+        if (!isset($calendar[$travelYear])) {
+            $calendar[$travelYear] = array(
+                $travelMonthNumber => array(
+                    $travelInfo
+                )
+            );
+        } else {
+            $calendar[$travelYear][$travelMonthNumber][] = $travelInfo;
+        }
+    }
+
+    foreach ($calendar as $year => $yearData) {
+
+        echo "<div class='year'><header><h4>".$year."</h4></header>";
+
+        foreach ($yearData as $month => $travelPlaces) {
+
+            echo"<header><div><h5>".Constants::$months[$month]."</h5><div></header><nav><ul>";
+
+            foreach ($travelPlaces as $place) {
+                echo "<li><a href=".Yii::app()->getBaseUrl()."/travel/view/?travel_id=".$place->id.">".
+                    $place->title."</a></li>";
+            }
+            echo "</ul></nav></div>";
+        }
+    }
+?>

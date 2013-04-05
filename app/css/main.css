@@ -449,7 +449,7 @@ div.ui-pnotify-text {
     }
 
     /*
-     * Don't show links for img, or javascript/internal links
+     * Don't show links for images, or javascript/internal links
      */
 
     .ir a:after,

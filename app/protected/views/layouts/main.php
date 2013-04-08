@@ -10,6 +10,7 @@
 
 		<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 		<meta name="description" content="">
+        <meta http-equiv="X-Frame-Options" content="deny">
 <!--		<meta name="viewport" content="width=device-width">-->
 
 		<?php Yii::app()->clientScript->registerCssFile('/css/normalize.css'); ?>

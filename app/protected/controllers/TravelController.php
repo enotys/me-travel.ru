@@ -6,7 +6,7 @@ class TravelController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/default';
 
 	/**
 	 * @return array action filters
@@ -35,6 +35,10 @@ class TravelController extends Controller
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions'=>array('create','update', 'add'),
+                'users'=>array('@'),
+            ),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
@@ -60,17 +64,15 @@ class TravelController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
-	{
-		$model=new Travel;
+	public function actionCreate() {
+		$model = new Travel;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Travel']))
-		{
-			$model->attributes=$_POST['Travel'];
-			if($model->save())
+		if(isset($_POST['Travel'])) {
+			$model->attributes = $_POST['Travel'];
+			if ($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
@@ -78,6 +80,30 @@ class TravelController extends Controller
 			'model'=>$model,
 		));
 	}
+
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionAdd() {
+        $model = new Travel;
+
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
+        if(isset($_POST['Travel'])) {
+            $model->attributes = $_POST['Travel'];
+            if ($model->save()) {
+                $this->redirect(array('view','id'=>$model->id));
+            }
+        }
+
+        $this->render(
+            'add',
+            array(
+                'model'=>$model,
+            )
+        );
+    }
 
 	/**
 	 * Updates a particular model.

@@ -39,16 +39,30 @@ class Travel extends CActiveRecord
 	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
+        $obj=new CHtmlPurifier();
 		return array(
 			array('title, maps_label, date, text, user_id', 'required'),
 			array('private', 'numerical', 'integerOnly'=>true),
 			array('title, maps_label', 'length', 'max'=>255),
 			array('date, user_id', 'length', 'max'=>10),
+            array('title, text', 'filter', 'filter'=>array($obj, 'purify')),
+            array('date','date','format'=>'d.M.yyyy'),
+            array('date', 'filter', 'filter'=> array($this, 'convertDate')),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, maps_label, date, text, user_id, private', 'safe', 'on'=>'search'),
 		);
 	}
+
+    /**
+     * Convert date to timestamp
+     *
+     * @param $date
+     * @return int
+     */
+    public function convertDate($date) {
+        return strtotime($date);
+    }
 
 	/**
 	 * @return array relational rules.
@@ -68,13 +82,13 @@ class Travel extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'title' => 'Title',
-			'maps_label' => 'Maps Label',
-			'date' => 'Date',
-			'text' => 'Text',
-			'user_id' => 'User',
-			'private' => 'Private',
+			'id' => 'Id',
+			'title' => 'Название места',
+			'maps_label' => 'Отметка на карте',
+			'date' => 'Дата',
+			'text' => 'Текст заметки',
+			'user_id' => 'Идентификатор пользователя',
+			'private' => 'Приватная запись',
 		);
 	}
 

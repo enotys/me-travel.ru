@@ -23,6 +23,11 @@ return array(
                 'thousandSeparator' => '',
             ),
         ),
+        'request' => array(
+            'enableCsrfValidation' => true,
+            'class' => 'MyHttpRequest'
+        ),
+
 		'user'=>array(
 			'class' => 'WebUser',
 			// enable cookie-based authentication

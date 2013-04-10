@@ -20,7 +20,7 @@ $this->breadcrumbs=array(
 	echo $form->error($userModel, 'email');
 	?>
 	<?php
-	echo $form->textField($userModel, 'email', array(
+	echo $form->emailField($userModel, 'email', array(
 			'id' => 'username',
 			'class' => 'span4',
 			'placeholder' => 'E-mail',

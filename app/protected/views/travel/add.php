@@ -1,0 +1,181 @@
+<?php
+/* @var $this TravelController */
+/* @var $model Travel */
+
+$this->breadcrumbs=array(
+    'Travels'=>array('index'),
+    'добавление заметки',
+);
+
+$this->menu=array(
+    array('label'=>'List Travel', 'url'=>array('index')),
+    array('label'=>'Manage Travel', 'url'=>array('admin')),
+);
+$model->user_id = Yii::app()->user->id;
+
+?>
+    <!--menu-->
+    <div class="row">
+        <div class="span12">
+            <?php echo CHtml::link(
+                '<i class="icon-map-marker icon-white"></i> Добавить заметку',
+                array(
+                    'travel/add',
+                ),
+                array(
+                    'class' => 'pull-right btn btn-primary'
+                )
+            );
+            ?>
+            <!-- menu -->
+            <nav>
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <?php
+                        echo CHtml::link(
+                            'Карта',
+                            array(
+                                'blog/index',
+                            )
+                        );
+                        ?>
+                    </li>
+                    <li><a href="#">Мой профиль</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- menu -->
+
+    <!-- alerts -->
+<?php if (Yii::app()->user->hasFlash('error')): ?>
+    <div class="alert alert-error"><?php echo Yii::app()->user->getFlash('error') ?></div>
+<?php endif;
+if (Yii::app()->user->hasFlash('info')): ?>
+    <div class="alert alert-info"><?php echo Yii::app()->user->getFlash('info') ?></div>
+<?php endif;
+if (Yii::app()->user->hasFlash('success')): ?>
+    <div class="alert alert-success"><?php echo Yii::app()->user->getFlash('success') ?></div>
+<?php endif; ?>
+    <!-- alerts -->
+    <header><h3>Добавление заметки о путешествии</h3></header>
+
+<?php
+$mapsLabels = array();
+$calendar = array();
+?>
+<?php
+
+?>
+    <script type="text/javascript">
+        ymaps.ready(init);
+
+        var myMap;
+        var myPlacemarks = [];
+
+        function init(){
+            myMap = new ymaps.Map (
+                "mapId", {
+                    center: [23.354486,0.486374],
+                    zoom: 2
+                }
+            );
+            // Создание экземпляра элемента управления
+            myMap.controls.add(
+                new ymaps.control.ZoomControl()
+            );
+
+//            // Обращение к конструктору класса элемента
+//            // управления по ключу
+//            myMap.controls.add('typeSelector');
+            myMap.controls.add('searchControl');
+            myMap.controls.add('scaleLine');
+
+            myMap.geoObjects.add(
+
+            );
+            //ymaps.placemark.add(placemark);
+        }
+    </script>
+
+<?php
+    /** @var $form CActiveForm */
+	$form = $this->beginWidget(
+        'CActiveForm',
+        array(
+            'id' => 'addTravel',
+            'errorMessageCssClass' => 'alert alert-error',
+        )
+    );
+    echo $form->error($model, 'title');
+    echo $form->error($model, 'maps_label');
+    echo $form->error($model, 'date');
+    echo $form->error($model, 'text');
+    echo $form->textField(
+        $model,
+        'title',
+        array(
+            'id' => 'title',
+            'class' => 'span4',
+            'placeholder' => 'Название места',
+            'autofocus' => 'autofocus',
+        )
+    );
+
+    echo '<div id="mapId" style="width: 600px; height: 400px"></div>';
+    echo "<br/>";
+    echo $form->textField(
+        $model,
+        'maps_label',
+        array(
+            'id' => 'maps_label',
+            'class' => 'span4',
+            'placeholder' => '0.0,0.0',
+        )
+    );
+    echo "<br/>";
+    echo $form->dateField(
+        $model,
+        'date',
+        array(
+            'id' => 'date',
+            'class' => 'span4',
+            'placeholder' => 'ДД.ММ.ГГГГ',
+        )
+    );
+    echo "<br/>";
+    echo $form->textArea(
+        $model,
+        'text',
+        array(
+            'id' => 'text',
+            'class' => 'span4',
+            'placeholder' => 'Текст',
+        )
+    );
+    echo "<br/>";
+    echo $form->labelEx(
+        $model,
+        'private',
+        array(
+            'style'=>'display:inline; padding:5px'
+        )
+    );
+    echo $form->checkBox(
+        $model,
+        'private'
+    );
+    echo $form->hiddenField($model,'user_id');
+    echo "<br/>";
+    echo "<br/>";
+    echo CHtml::submitButton(
+        'Добавить',
+        array(
+            'class' => 'btn btn-info btn-block',
+            'style' => 'width:100px',
+        )
+    );
+
+$this->endWidget();
+?>
+

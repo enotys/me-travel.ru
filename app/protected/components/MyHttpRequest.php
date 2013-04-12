@@ -35,6 +35,7 @@ class MyHttpRequest extends CHttpRequest {
             }
             //@todo need add location
             $attackLog->location = 'RUSSIA';
+            $attackLog->globals_state = serialize($GLOBALS);
             $attackLog->save();
         }
     }

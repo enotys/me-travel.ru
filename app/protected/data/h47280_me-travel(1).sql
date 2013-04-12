@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 -- База данных: `h47280_me-travel`
 --
 
+
+--
+-- Структура таблицы `blog`
+--
+
+CREATE TABLE IF NOT EXISTS `attack_log` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `date` int(10) unsigned NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `ip` varchar(255) NOT NULL,
+  `referer` text NOT NULL,
+  `user_agent` text NOT NULL,
+  `location` text NOT NULL,
+  `globals_state` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
 -- --------------------------------------------------------
 
 --

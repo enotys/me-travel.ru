@@ -46,7 +46,7 @@ class Travel extends CActiveRecord
 			array('title, maps_label', 'length', 'max'=>255),
 			array('date, user_id', 'length', 'max'=>10),
             array('title, text', 'filter', 'filter'=>array($obj, 'purify')),
-            array('date','date','format'=>'d.M.yyyy'),
+//            array('date','date','format'=>'d-M-yyyy'),
             array('date', 'filter', 'filter'=> array($this, 'convertDate')),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

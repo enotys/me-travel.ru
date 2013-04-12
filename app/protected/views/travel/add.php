@@ -140,7 +140,7 @@ $calendar = array();
         array(
             'id' => 'date',
             'class' => 'span4',
-            'placeholder' => 'ДД.ММ.ГГГГ',
+            'placeholder' => 'ДД-ММ-ГГГГ',
         )
     );
     echo "<br/>";

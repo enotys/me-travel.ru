@@ -8,7 +8,10 @@
 class MyHttpRequest extends CHttpRequest {
 
     /**
+     * Save attack info in DB and throw exception
+     *
      * @param CEvent $event
+     * @throws CHttpException
      */
     public function validateCsrfToken($event) {
         try {
@@ -37,7 +40,9 @@ class MyHttpRequest extends CHttpRequest {
             $attackLog->location = 'RUSSIA';
             $attackLog->globals_state = serialize($GLOBALS);
             $attackLog->save();
+            throw new CHttpException(400,Yii::t('yii','The CSRF token could not be verified.'));
         }
+
     }
 
 

@@ -71,7 +71,7 @@ $calendar = array();
         ymaps.ready(init);
 
         var myMap;
-        var myPlacemarks = [];
+        var myPlacemark;
 
         function init(){
             myMap = new ymaps.Map (
@@ -85,16 +85,24 @@ $calendar = array();
                 new ymaps.control.ZoomControl()
             );
 
-//            // Обращение к конструктору класса элемента
-//            // управления по ключу
-//            myMap.controls.add('typeSelector');
             myMap.controls.add('searchControl');
             myMap.controls.add('scaleLine');
-
-            myMap.geoObjects.add(
-
+            myPlacemark = new ymaps.Placemark([23.354486,0.486374], {
+                hintContent: 'Подвинь меня!'
+            }, {
+                draggable: true // Метку можно перетаскивать, зажав левую кнопку мыши.
+            });
+            myPlacemark.events.add(
+                'dragend',
+                function(e) {
+                    // Получение ссылки на объект, который был передвинут.
+                    var thisPlacemark = e.get('target');
+                    // Определение координат метки
+                    var coords = thisPlacemark.geometry.getCoordinates();
+                    document.getElementById('maps_label').setAttribute('value',coords);
+                }
             );
-            //ymaps.placemark.add(placemark);
+            myMap.geoObjects.add(myPlacemark);
         }
     </script>
 
@@ -130,7 +138,8 @@ $calendar = array();
         array(
             'id' => 'maps_label',
             'class' => 'span4',
-            'placeholder' => '0.0,0.0',
+            //'placeholder' => '0.0,0.0',
+            //'disabled' => 'disabled',
         )
     );
     echo "<br/>";

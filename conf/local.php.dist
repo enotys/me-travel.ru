@@ -1,0 +1,66 @@
+<?php
+/**
+ * Settings specified for host.
+ *
+ * @author serj
+ */
+date_default_timezone_set('Europe/Moscow');
+return array(
+	'components' => array(
+		// use a MySQL database
+		'db'=>array(
+			'connectionString' => 'mysql:host=localhost;dbname=:DB_NAME:',
+			'username' => ':DB_USER:',
+			'password' => ':DB_PASSWORD:',
+			'charset' => 'utf8',
+		),
+		'log' => array(
+			'class' => 'CLogRouter',
+			'routes' => array(
+				array(
+					'class' => 'CFileLogRoute',
+					'levels' => 'error, warning',
+				),
+				// uncomment the following to show log messages on web pages
+				/*
+				array(
+					'class'=>'CWebLogRoute',
+				),
+				*/
+			),
+		),
+	),
+	'params' => array(
+		'adminEmail'=>':ADMIN_EMAIL:',
+		'debugEmail' => 'nobody@nobody.ru',
+		'uploadsDirPath' => ':APP_PATH:/protected/data/upload',
+		'processedMediaplansDirPath' => ':APP_PATH:/protected/data/processed/mediaplans',
+		'externalAuthData' => array(
+			// Yandex.Direct
+			1 => array(
+				'login' => ':YANDEX_DIRECT_LOGIN:',
+				'password' => ':YANDEX_DIRECT_PASSWORD:',
+				'applicationId' => ':YANDEX_DIRECT_APP_ID:',
+			),
+			// Google AdWords
+			2 => array(
+				'login' => ':GOOGLE_ADWORDS_LOGIN:',
+				'password' => ':GOOGLE_ADWORDS_PASSWORD:',
+				'developerId' => ':GOOGLE_ADWORDS_DEVELOPER_ID:',
+				'customerId' => ':GOOGLE_ADWORDS_CUSTOMER_ID:',
+			),
+		),
+		'inspector' => array(
+			'emulateWorking' => :INSPECTOR_EMULATE_WORKING:,
+			'sendNotifiesByEmail' => :INSPECTOR_SEND_NOTIFIES_BY_EMAIL:,
+			'senderEmail' => array(
+				'name' => ':INSPECTOR_EMAIL_NAME:',
+				'address' => ':INSPECTOR_EMAIL_ADDRESS:'
+			),
+		),
+		'YiiMailer' => array(
+			'Mailer' => ':MAILER_PROTOCOL:',
+			'Host' => ':SMTP_SERVER_HOSTNAME:',
+		),
+	),
+);

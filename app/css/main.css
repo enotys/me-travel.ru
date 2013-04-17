@@ -7,10 +7,6 @@ html {
     overflow-y: scroll;
 }
 
-body {
-    min-width: 1200px;
-}
-
 body > .navbar .brand {
     color: #999999;
     font-weight: bold;

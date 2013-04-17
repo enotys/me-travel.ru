@@ -3,7 +3,7 @@
 <!--navigation-->
 <div class="navbar navbar-inverse navi">
 	<div class="navbar-inner">
-		<div class="container">
+		<div class="container-fluid">
 			<div>
 				<?php
 				$this->widget('zii.widgets.CMenu',array(

@@ -2,6 +2,9 @@
 /* @var $this TravelController */
 /* @var $model Travel */
 
+Yii::app()->clientScript->registerCoreScript('jquery');
+Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
+
 $this->breadcrumbs=array(
     'Travels'=>array('index'),
     'добавление заметки',
@@ -153,15 +156,28 @@ $calendar = array();
         )
     );
     echo "<br/>";
-    echo $form->textArea(
-        $model,
-        'text',
-        array(
-            'id' => 'text',
-            'class' => 'span4',
-            'placeholder' => 'Текст',
-        )
-    );
+    $this->widget('ImperaviRedactorWidget', array(
+        // можно использовать пару имя модели - имя свойства
+        'model' => $model,
+        'attribute' => 'text',
+
+        // немного опций, см. http://imperavi.com/redactor/docs/
+        'options' => array(
+            'lang' => 'ru',
+//            'toolbar' => true,
+            'iframe' => true,
+            'css' => 'wym.css',
+        ),
+    ));
+//    echo $form->textArea(
+//        $model,
+//        'text',
+//        array(
+//            'id' => 'text',
+//            'class' => 'span4',
+//            'placeholder' => 'Текст',
+//        )
+//    );
     echo "<br/>";
     echo $form->labelEx(
         $model,

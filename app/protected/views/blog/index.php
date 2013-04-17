@@ -65,7 +65,7 @@ if (Yii::app()->user->hasFlash('success')): ?>
 <?php
 
 ?>
-<div id="mapId" style="width: 1170px; height: 430px"></div>
+<div id="mapId" style="width: 800px; height: 430px"></div>
 
 <script type="text/javascript">
     ymaps.ready(init);
@@ -119,13 +119,19 @@ if (Yii::app()->user->hasFlash('success')): ?>
 
         foreach ($yearData as $month => $travelPlaces) {
 
-            echo"<header><div><h5>".Constants::$months[$month]."</h5><div></header><nav><ul>";
+            echo"<ul class='month'><li><div><h5>".Constants::$months[$month]."</h5><nav><ul>";
 
             foreach ($travelPlaces as $place) {
-                echo "<li><a href=".Yii::app()->getBaseUrl()."/travel/view/?travel_id=".$place->id.">".
-                    $place->title."</a></li>";
+                echo "<li>".CHtml::link(
+                    $place->title,
+                    array(
+                        'travel/view',
+                        'id'=>$place->id
+                    )
+                ) ;
             }
-            echo "</ul></nav></div>";
+            echo "</li></ul></nav></li></ul>";
         }
+        echo "</div>";
     }
 ?>

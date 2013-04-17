@@ -3,9 +3,6 @@
 <!--navigation-->
 <div class="navbar navbar-inverse navi">
 	<div class="navbar-inner">
-		<a class="brand" href="<?php echo Yii::app()->request->getBaseUrl(true); ?>">
-			<?php echo Yii::app()->name; ?>
-		</a>
 		<div class="container">
 			<div>
 				<?php

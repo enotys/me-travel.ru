@@ -13,8 +13,7 @@
  * @property string $location
  * @property string $globals_state
  */
-class AttacksLog extends CActiveRecord
-{
+class AttacksLog extends CActiveRecord {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -102,4 +101,32 @@ class AttacksLog extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    /**
+     * Logging all info if has attack
+     */
+    public function log($attackType) {
+        $this->date = time();
+        $this->type = $attackType;
+        $this->ip = '0.0.0.0';
+        if (!empty($_SERVER['HTTP_X_REAL_IP'])) {
+            $this->ip = $_SERVER['HTTP_X_REAL_IP'];
+        } else if (!empty($_SERVER['REMOTE_ADDR'])) {
+            $this->ip = $_SERVER['REMOTE_ADDR'];
+        }
+        if (!empty($_SERVER['HTTP_REFERER'])){
+            $this->referer = $_SERVER['HTTP_REFERER'];
+        } else {
+            $this->referer = 'EMPTY_REFERER';
+        }
+        if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+            $this->user_agent = $_SERVER['HTTP_USER_AGENT'];
+        } else {
+            $this->user_agent = 'Unknown';
+        }
+        //@todo need add location
+        $this->location = 'RUSSIA';
+        $this->globals_state = serialize($GLOBALS);
+        $this->save();
+    }
 }

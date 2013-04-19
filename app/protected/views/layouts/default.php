@@ -9,7 +9,8 @@
 				$this->widget('zii.widgets.CMenu',array(
 					'items'=>array(
 						array('label'=>'Заметки', 'url'=>array('blog/index'), 'visible'=>!Yii::app()->user->isGuest),
-						array('label'=>'Пользователи', 'url'=>array('user/index'), 'visible'=>Yii::app()->user->checkAccess('users:view'))
+						array('label'=>'Пользователи', 'url'=>array('user/index'), 'visible'=>Yii::app()->user->checkAccess('users:view')),
+                        array('label'=>'Администрирование', 'url'=>array('attackslog/index'), 'visible'=>Yii::app()->user->checkAccess('attackslog:index')),
 					),
 					'htmlOptions' => array('class' => 'nav'),
 					'activeCssClass' => 'active',

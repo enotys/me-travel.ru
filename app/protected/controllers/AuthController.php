@@ -31,6 +31,9 @@ class AuthController extends Controller
 				Yii::app()->user->login($identity, $duration);
 				$this->redirect(array('blog/index'));
 			} else {
+                if ($identity->errorCode == 100) {
+                    $userModel->addError('password', $identity->errorMessage);
+                }
 				$userModel->addError('password', 'Неверный E-mail или пароль.');
 			}
 		}

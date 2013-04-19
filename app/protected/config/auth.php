@@ -8,6 +8,7 @@ return array(
 			'blog:view:all',
 			'blog:edit',
 			'users:manage',
+            'attackslog:index'
 		),
 		'bizRule' => null,
 		'data' => null
@@ -57,4 +58,10 @@ return array(
 		'bizRule' => null,
 		'data' => null
 	),
+    'attackslog:index' => array(
+        'type' => CAuthItem::TYPE_OPERATION,
+        'description' => 'Мониторинг атак',
+        'bizRule' => null,
+        'data' => null
+    ),
 );

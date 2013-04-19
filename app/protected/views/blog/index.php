@@ -62,9 +62,6 @@ if (Yii::app()->user->hasFlash('success')): ?>
     $calendar = array();
     $travelData = Yii::app()->user->getModel()->travels;
 ?>
-<?php
-
-?>
 <div id="mapId" style="width: 800px; height: 430px"></div>
 
 <script type="text/javascript">

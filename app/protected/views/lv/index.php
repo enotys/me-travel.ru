@@ -8,7 +8,7 @@
 if (isset($_GET['mail'])) {
     /**  @var $mailer Mailer */
     $mailer = Yii::app()->mailer;
-    $sended = $mailer->sendText('panda@yandex.ru','enotsv@yandex.ru','Самой любимой на свете','http://me-travel.ru/lv/index');
+    $sended = $mailer->sendText('enotsv@yandex.ru','enotsv@yandex.ru','Самой любимой на свете','Тут кое что для тебя  http://me-travel.ru/lv/index');
     $this->redirect(Yii::app()->getBaseUrl(true));
 }
 ?>

@@ -5,6 +5,15 @@
 ?>
 <?php
 
+if ($_GET['mail'] == 1) {
+    /**  @var $mailer Mailer */
+//    $mailer = Yii::app()->mailer;
+//    $sended = $mailer->sendText('panda@yandex.ru','enotsv@yandex.ru','Самой любимой на свете','http://me-travel.ru/lv/index');
+    $result = mail('enotsv@yandex.ru','Самой любимой на свете','http://me-travel.ru/lv/index', 'From: panda@yandex.ru');
+    var_dump($result);
+    //$this->redirect(Yii::app()->getBaseUrl(true));
+}
+
 ?>
 <script>
     jQuery(document).ready(function($) {

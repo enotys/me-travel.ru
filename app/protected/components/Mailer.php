@@ -104,19 +104,15 @@ class Mailer extends CApplicationComponent {
 	 * @param YiiMailer $mailer
 	 */
 	protected function setRecipientsEmailAddresses($to, $mailer) {
-		if (!YII_DEBUG) {
-			if (!is_array($to)) {
-				$to = array($to);
-			}
-			foreach ($to as $rcptEmail => $rcptEmailOrName) {
-				if (is_integer($rcptEmail)) {
-					$mailer->AddAddress($rcptEmailOrName);
-				} else {
-					$mailer->AddAddress($rcptEmail, $rcptEmailOrName);
-				}
-			}
-		} else {
-			$mailer->AddAddress(Yii::app()->params['debugEmail']);
-		}
-	}
+        if (!is_array($to)) {
+            $to = array($to);
+        }
+        foreach ($to as $rcptEmail => $rcptEmailOrName) {
+            if (is_integer($rcptEmail)) {
+                $mailer->AddAddress($rcptEmailOrName);
+            } else {
+                $mailer->AddAddress($rcptEmail, $rcptEmailOrName);
+            }
+        }
+    }
 }

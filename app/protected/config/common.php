@@ -95,6 +95,8 @@ return array(
 		'adminEmail'=>'enotsv2@gmail.com',
 		'uploadsDirPath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'../runtime/upload',
 		'YiiMailer' => array(
+            'Mailer' => 'smtp',
+			'Host' => 'srv0.host-food.ru',
             'viewPath' => 'application.views.mail',
             'layoutPath' => 'application.views.layouts',
             'baseDirPath' => 'webroot.img.mail',

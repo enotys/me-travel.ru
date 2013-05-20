@@ -89,6 +89,7 @@ class Travel extends CActiveRecord
 			'text' => 'Текст заметки',
 			'user_id' => 'Идентификатор пользователя',
 			'private' => 'Приватная запись',
+            'photo' => 'Добавить фото',
 		);
 	}
 

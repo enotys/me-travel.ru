@@ -43,7 +43,13 @@ $model->user_id = Yii::app()->user->id;
                         );
                         ?>
                     </li>
-                    <li><a href="#">Мой профиль</a></li>
+                    <li><?php echo CHtml::link(
+                            'Мой профиль',
+                            array(
+                                'user/index',
+                            )
+                        );
+                        ?></li>
                 </ul>
             </nav>
         </div>
@@ -191,18 +197,25 @@ $calendar = array();
         'private'
     );
     echo $form->hiddenField($model,'user_id');
+
     echo "<br/>";
     echo "<br/>";
-    echo CHtml::submitButton(
-        'Добавить',
-        array(
-            'class' => 'btn btn-info btn-block',
-            'style' => 'width:100px',
-        )
-    );
+    $form->label($model, 'photo');
     echo CHtml::fileField(
-        'image'
+        'photo',
+        'Добавить фото',
+        array('id' => 'photo')
     );
+    echo "<br/>";
+    echo "<br/>";
+
+    echo CHtml::submitButton(
+    'Добавить',
+    array(
+        'class' => 'btn btn-info btn-block',
+        'style' => 'width:100px',
+    )
+);
 
 $this->endWidget();
 ?>

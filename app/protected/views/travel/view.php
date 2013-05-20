@@ -30,7 +30,13 @@ $model->user_id = Yii::app()->user->id;
                     );
                     ?>
                 </li>
-                <li><a href="#">Мой профиль</a></li>
+                <li><?php echo CHtml::link(
+                        'Мой профиль',
+                        array(
+                            'user/index',
+                        )
+                    );
+                    ?></li>
             </ul>
         </nav>
     </div>

@@ -200,6 +200,9 @@ $calendar = array();
             'style' => 'width:100px',
         )
     );
+    echo CHtml::fileField(
+        'image'
+    );
 
 $this->endWidget();
 ?>

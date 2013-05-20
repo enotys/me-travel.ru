@@ -13,6 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create User</h1>
+<h1>Создание пользователя</h1>
+<h3>Страница назодится в разработке</h3>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

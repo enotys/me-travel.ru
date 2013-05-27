@@ -33,6 +33,7 @@ $this->menu=array()
 <label>CSRF</label><input type='checkbox' value='1'  checked = "checked"> <br>
 <label>XSS</label><input type='checkbox' value='1'  checked = "checked"> <br>
 <label>Brute Force</label><input type='checkbox' value='1'  checked = "checked"> <br>
+<input type='submit' value='Сохранить'> <br>
 <br>
 
 <h3>Мониторинг атак</h3>

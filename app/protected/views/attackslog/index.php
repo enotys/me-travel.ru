@@ -29,23 +29,56 @@ $this->menu=array()
     </div>
 </div>
 
+<h3>Отслеживаемые атаки</h3>
+<label>CSRF</label><input type='checkbox' value='1'  checked = "checked"> <br>
+<label>XSS</label><input type='checkbox' value='1'  checked = "checked"> <br>
+<label>Brute Force</label><input type='checkbox' value='1'  checked = "checked"> <br>
+<br>
+
 <h3>Мониторинг атак</h3>
 
+</br>
 <?php
+echo "<label>Период анализа</label>";
+echo "<input type='date', id='dateStart',class='span4', 'placeholder' => 'ДД-ММ-ГГГГ'> &nbsp";
+echo "<input type='date', id='dateEnd',class='span4', 'placeholder' => 'ДД-ММ-ГГГГ'>";
+    echo "<br/>";
+	echo "<label>Тип атаки</label>";
+	echo "<select> 
+		<option selected>CSRF</option>
+		<option selected>XSS</option>
+		<option selected>Brute Force</option>
+	</select>";
+	echo "<br/>";
+
 $this->Widget('ext.highcharts.HighchartsWidget', array(
     'options' => array(
-        'title' => array('text' => 'Fruit Consumption'),
+        'title' => array('text' => 'Динамика атак на сайт'),
         'xAxis' => array(
-            'categories' => array('Apples', 'Bananas', 'Oranges')
+            'categories' => array('01.03.2013','02.03.2013','03.05.2013', '04.05.2013', '05.05.2013','06.05.2013','07.05.2013','08.03.2013','09.03.2013')
         ),
         'yAxis' => array(
-            'title' => array('text' => 'Fruit eaten')
+            'title' => array('text' => 'Количество атак')
         ),
         'series' => array(
-            array('name' => 'Jane', 'data' => array(1, 0, 4)),
-            array('name' => 'John', 'data' => array(5, 7, 3))
+            array('name' => 'Общее количество атак', 'data' => array(5, 3, 4, 7, 10, 5, 3, 0, 0)),
+            array('name' => 'Количество CSRF', 'data' => array(1, 2, 2, 3, 5, 2, 1, 0, 0))
         )
     )
+));
+
+$this->Widget('ext.highcharts.HighchartsWidget',array(
+        'options' => array(
+				'title' => array('text'=>'Процент зафиксированных атак'),
+                'series' => array(array(
+                        'type' => 'pie',
+                        'data' => array(
+                                array('CSRF', 63.2),
+                                array('XSS', 26.8),
+                                array('Brute Force', 10),
+                        )
+                ))
+        )
 ));
 ?>
 

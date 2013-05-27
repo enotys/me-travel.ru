@@ -52,7 +52,10 @@ $this->menu=array()
 		<option selected>Brute Force</option>
 	</select>";
 	echo "<br/>";
+?>
+    <input type='submit' value='Показать активность' class='btn btn-info btn-block' style="width:100px"> <br>
 
+<?php
 $this->Widget('ext.highcharts.HighchartsWidget', array(
     'options' => array(
         'title' => array('text' => 'Динамика атак на сайт'),

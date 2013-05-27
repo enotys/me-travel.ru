@@ -3,7 +3,7 @@
 Yii::import('ext.YiiMailer.YiiMailer');
 
 /**
- * @author serj
+ * @author enot
  */
 class Mailer extends CApplicationComponent {
 

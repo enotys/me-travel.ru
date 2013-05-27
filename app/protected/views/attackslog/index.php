@@ -32,7 +32,7 @@ $this->menu=array()
 <h3>Отслеживаемые атаки</h3>
 <label>CSRF</label><input type='checkbox' value='1'  checked = "checked"> <br>
 <label>XSS</label><input type='checkbox' value='1'  checked = "checked"> <br>
-<label>Brute Force</label><input type='checkbox' value='1'  checked = "checked"> <br>
+<label>Brute Force</label><input type='checkbox' value='1'  checked = "checked"> <br> <br>
 <input type='submit' value='Сохранить' class='btn btn-info btn-block' style="width:100px"> <br>
 <br>
 
@@ -41,8 +41,8 @@ $this->menu=array()
 </br>
 
  <label>Период анализа</label>;
- <input type='date' id='dateStart' class='span4' placeholder='01-05-2013'> &nbsp;
- <input type='date' id='dateEnd' class='span4' placeholder='09-05-2013'>;
+ <input type='date' id='dateStart' class='span4' placeholder='01-05-2013'> &nbsp
+ <input type='date' id='dateEnd' class='span4' placeholder='09-05-2013'>
 <?php
     echo "<br/>";
 	echo "<label>Тип атаки</label>";
@@ -53,14 +53,14 @@ $this->menu=array()
 	</select>";
 	echo "<br/>";
 ?>
-    <input type='submit' value='Показать активность' class='btn btn-info btn-block' style="width:100px"> <br>
+    <input type='submit' value='Показать активность' class='btn btn-info btn-block' style="width:250px"> <br>
 
 <?php
 $this->Widget('ext.highcharts.HighchartsWidget', array(
     'options' => array(
         'title' => array('text' => 'Динамика атак на сайт'),
         'xAxis' => array(
-            'categories' => array('01.03.2013','02.03.2013','03.05.2013', '04.05.2013', '05.05.2013','06.05.2013','07.05.2013','08.03.2013','09.03.2013')
+            'categories' => array('01.05.2013','02.05.2013','03.05.2013', '04.05.2013', '05.05.2013','06.05.2013','07.05.2013','08.05.2013','09.05.2013')
         ),
         'yAxis' => array(
             'title' => array('text' => 'Количество атак')

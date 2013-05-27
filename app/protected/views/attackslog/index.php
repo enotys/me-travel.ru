@@ -33,16 +33,17 @@ $this->menu=array()
 <label>CSRF</label><input type='checkbox' value='1'  checked = "checked"> <br>
 <label>XSS</label><input type='checkbox' value='1'  checked = "checked"> <br>
 <label>Brute Force</label><input type='checkbox' value='1'  checked = "checked"> <br>
-<input type='submit' value='Сохранить'> <br>
+<input type='submit' value='Сохранить' class='btn btn-info btn-block' style="width:100px"> <br>
 <br>
 
 <h3>Мониторинг атак</h3>
 
 </br>
+
+ <label>Период анализа</label>;
+ <input type='date' id='dateStart' class='span4' placeholder='01-05-2013'> &nbsp;
+ <input type='date' id='dateEnd' class='span4' placeholder='09-05-2013'>;
 <?php
-echo "<label>Период анализа</label>";
-echo "<input type='date', id='dateStart',class='span4', 'placeholder' = '01-05-2013'> &nbsp";
-echo "<input type='date', id='dateEnd',class='span4', 'placeholder' = '09-05-2013'>";
     echo "<br/>";
 	echo "<label>Тип атаки</label>";
 	echo "<select> 

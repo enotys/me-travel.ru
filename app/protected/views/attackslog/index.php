@@ -40,8 +40,8 @@ $this->menu=array()
 </br>
 <?php
 echo "<label>Период анализа</label>";
-echo "<input type='date', id='dateStart',class='span4', 'placeholder' = 'ДД-ММ-ГГГГ'> &nbsp";
-echo "<input type='date', id='dateEnd',class='span4', 'placeholder' = 'ДД-ММ-ГГГГ'>";
+echo "<input type='date', id='dateStart',class='span4', 'placeholder' = '01-05-2013'> &nbsp";
+echo "<input type='date', id='dateEnd',class='span4', 'placeholder' = '09-05-2013'>";
     echo "<br/>";
 	echo "<label>Тип атаки</label>";
 	echo "<select> 

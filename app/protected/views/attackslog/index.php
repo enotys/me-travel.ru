@@ -40,7 +40,7 @@ $this->menu=array()
 
 </br>
 
- <label>Период анализа</label>;
+ <label>Период анализа</label>
  <input type='date' id='dateStart' class='span4' placeholder='01-05-2013'> &nbsp
  <input type='date' id='dateEnd' class='span4' placeholder='09-05-2013'>
 <?php
@@ -49,7 +49,7 @@ $this->menu=array()
 	echo "<select> 
 		<option selected>CSRF</option>
 		<option selected>XSS</option>
-		<option selected>Brute Force</option>
+		<option selected>BruteForce</option>
 	</select>";
 	echo "<br/>";
 ?>
@@ -80,7 +80,7 @@ $this->Widget('ext.highcharts.HighchartsWidget',array(
                         'data' => array(
                                 array('CSRF', 63.2),
                                 array('XSS', 26.8),
-                                array('Brute Force', 10),
+                                array('BruteForce', 10),
                         )
                 ))
         )
